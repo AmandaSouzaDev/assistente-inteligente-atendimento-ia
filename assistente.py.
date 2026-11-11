@@ -1,0 +1,37 @@
+
+def identificar_assunto(mensagem):
+    mensagem = mensagem.lower()
+
+    if any(palavra in mensagem for palavra in ["pedido", "entrega", "compra"]):
+        return "Pedidos"
+
+    elif any(palavra in mensagem for palavra in ["pagamento", "pix", "cobrança"]):
+        return "Pagamentos"
+
+    elif any(palavra in mensagem for palavra in ["problema", "erro", "reclamação"]):
+        return "Suporte"
+
+    else:
+        return "Outros"
+
+
+def sugerir_resposta(assunto):
+    respostas = {
+        "Pedidos": "Olá! Vamos verificar as informações do seu pedido.",
+        "Pagamentos": "Olá! Vamos ajudar você com a questão do pagamento.",
+        "Suporte": "Olá! Conte um pouco mais sobre o problema para podermos ajudar.",
+        "Outros": "Olá! Recebemos sua mensagem. Como podemos ajudar?"
+    }
+
+    return respostas[assunto]
+
+
+print("ASSISTENTE INTELIGENTE DE ATENDIMENTO")
+
+mensagem = input("Digite sua solicitação: ")
+
+assunto = identificar_assunto(mensagem)
+resposta = sugerir_resposta(assunto)
+
+print("\nAssunto identificado:", assunto)
+print("Resposta sugerida:", resposta)
